@@ -8,10 +8,11 @@ public class Lexer {
 
     public static void main(String[] args) {
 
-    linha = "(r1234 123 +-";
+    linha = "1234 123 +-";
 
     while (indexOfLinha<linha.length()) {
         lex();
+        if (lexema=="") lex();
         System.out.println("Token: " + token + " - Lexema: " + lexema + " TokenID: " + tokenID);
         lexema="";
     }
@@ -21,19 +22,15 @@ public class Lexer {
 
     public static void lex(){
 
-
         //Crias os ident
         if (Character.isLetter(linha.charAt(indexOfLinha))){
             token = "IDENT";
             tokenID = 1;
 
             while (indexOfLinha < linha.length() && (Character.isLetter(linha.charAt(indexOfLinha)) || Character.isDigit(linha.charAt(indexOfLinha)))){
-
                 lexema = lexema + linha.charAt(indexOfLinha);
                 indexOfLinha++;
-
             }
-
             return;
         }
 
